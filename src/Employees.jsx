@@ -2,6 +2,8 @@ import { useState } from "react";
 import femaleProfile from "./images/femaleProfile.jpg";
 import maleProfile from "./images/maleProfile.jpg";
 
+import Grid from "./components/Grid";
+
 const Employee = () => {
     const [employees, setEmployees] = useState([
         {
@@ -91,9 +93,10 @@ const Employee = () => {
     ]);
     return (
         <main className="container">
-            <div className="row justify-content-center mt-3 mb-3">
-                <div className="col-B">
-                    <div className="card-collection">
+            <Grid
+                size={3}
+                content={() => (
+                    <>
                         {employees.map((employee) => (
                             <div
                                 id={employee.id}
@@ -120,9 +123,9 @@ const Employee = () => {
                                 </div>
                             </div>
                         ))}
-                    </div>
-                </div>
-            </div>
+                    </>
+                )}
+            />
         </main>
     );
 };
