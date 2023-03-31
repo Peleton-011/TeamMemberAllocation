@@ -92,6 +92,16 @@ const Employee = () => {
     ]);
     return (
         <main className="container">
+          <div className="row justify-content mt-3 mb-3">
+            <div className="col-B">
+              <select className="form-select form-select-lg">
+                <option value="TeamA">Team A</option>
+                <option value="TeamB">Team B</option>
+                <option value="TeamC">Team C</option>
+                <option value="TeamD">Team D</option>
+              </select>
+            </div>
+          </div>
             <Grid size={3} content={() => <>{generateCards(employees)}</>} />
         </main>
     );
