@@ -3,13 +3,9 @@ import React from "react";
 import femaleProfile from "../images/femaleProfile.jpg";
 import maleProfile from "../images/maleProfile.jpg";
 
-const EmployeeCard = ({fullName, id, gender, designation}) => {
+const EmployeeCard = ({ fullName, id, gender, designation }) => {
     return (
-        <div
-            id={id}
-            className="card m-2"
-            style={{ cursor: "pointer" }}
-        >
+        <div id={id} className="card m-2" style={{ cursor: "pointer" }}>
             <img
                 src={gender === "male" ? maleProfile : femaleProfile}
                 alt="profile image"

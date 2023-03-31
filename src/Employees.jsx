@@ -98,18 +98,18 @@ const Employee = () => {
 };
 
 function generateCards(employees) {
-    return ( 
-    <>
-    {employees.map((employee) => (
-        <EmployeeCard
-            fullName={employee.fullName}
-            id={employee.id}
-            gender={employee.gender}
-            designation={employee.designation}
-        />
-    ))}
-    </>)
-    ;
+    return (
+        <>
+            {employees.map((employee) => (
+                <EmployeeCard
+                    fullName={employee.fullName}
+                    id={employee.id}
+                    gender={employee.gender}
+                    designation={employee.designation}
+                />
+            ))}
+        </>
+    );
 }
 
 export default Employee;
