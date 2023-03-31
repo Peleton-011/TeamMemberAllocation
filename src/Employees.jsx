@@ -86,9 +86,11 @@ const Employee = () => {
     teamName: "TeamD"
   }])
   return (
-    <header>
-
-    </header>
+    <main>
+      {employees.map((employee) => (
+        <p className="full-name">{employee.fullName}</p>
+      ))}
+    </main>
   )
 }
 
