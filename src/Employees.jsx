@@ -1,8 +1,7 @@
 import { useState } from "react";
-import femaleProfile from "./images/femaleProfile.jpg";
-import maleProfile from "./images/maleProfile.jpg";
 
 import Grid from "./components/Grid";
+import EmployeeCard from "./components/EmployeeCard";
 
 const Employee = () => {
     const [employees, setEmployees] = useState([
@@ -93,41 +92,24 @@ const Employee = () => {
     ]);
     return (
         <main className="container">
-            <Grid
-                size={3}
-                content={() => (
-                    <>
-                        {employees.map((employee) => (
-                            <div
-                                id={employee.id}
-                                className="card m-2"
-                                style={{ cursor: "pointer" }}
-                            >
-                                <img
-                                    src={
-                                        employee.gender === "male"
-                                            ? maleProfile
-                                            : femaleProfile
-                                    }
-                                    alt="profile image"
-                                    className="card-img-top"
-                                />
-                                <div className="card-body">
-                                    <h5 className="card-title">
-                                        Full Name: {employee.fullName}
-                                    </h5>
-                                    <p className="card-text">
-                                        <b>Designation: </b>
-                                        {employee.designation}{" "}
-                                    </p>
-                                </div>
-                            </div>
-                        ))}
-                    </>
-                )}
-            />
+            <Grid size={3} content={() => <>{generateCards(employees)}</>} />
         </main>
     );
 };
+
+function generateCards(employees) {
+    return ( 
+    <>
+    {employees.map((employee) => (
+        <EmployeeCard
+            fullName={employee.fullName}
+            id={employee.id}
+            gender={employee.gender}
+            designation={employee.designation}
+        />
+    ))}
+    </>)
+    ;
+}
 
 export default Employee;
