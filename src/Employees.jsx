@@ -91,17 +91,36 @@ const Employee = () => {
     ]);
     return (
         <main className="container">
-            <div className="row">
+            <div className="row justify-content-center mt-3 mb-3">
                 <div className="col-B">
-                    {employees.map((employee) => (
-                        <div id={employee.id} className="card">
-                            <img src={employee.gender === "male" ? maleProfile : femaleProfile} alt="profile image" className="card-img-top" />
-                            <div className="card-body">
-                              <h5 className="card-title">Full Name: {employee.fullName}</h5>
-                            
+                    <div className="card-collection">
+                        {employees.map((employee) => (
+                            <div
+                                id={employee.id}
+                                className="card m-2"
+                                style={{ cursor: "pointer" }}
+                            >
+                                <img
+                                    src={
+                                        employee.gender === "male"
+                                            ? maleProfile
+                                            : femaleProfile
+                                    }
+                                    alt="profile image"
+                                    className="card-img-top"
+                                />
+                                <div className="card-body">
+                                    <h5 className="card-title">
+                                        Full Name: {employee.fullName}
+                                    </h5>
+                                    <p className="card-text">
+                                        <b>Designation: </b>
+                                        {employee.designation}{" "}
+                                    </p>
+                                </div>
                             </div>
-                        </div>
-                    ))}
+                        ))}
+                    </div>
                 </div>
             </div>
         </main>
