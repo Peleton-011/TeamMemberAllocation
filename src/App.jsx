@@ -1,102 +1,104 @@
 import "./App.css";
 import { useState, useEffect } from "react";
-import EmployeeCard from "./components/EmployeeCard";
 
 import Header from "./header";
 import Employees from "./Employees";
 import Footer from "./footer";
 
 export default function App() {
+    //Stateful data and such
     const [selectedTeam, setTeam] = useState(
         JSON.parse(localStorage.getItem("selectedTeam")) || "Team A"
     );
 
-    const [employees, setEmployees] = useState(JSON.parse(localStorage.getItem("employeeList")) || [
-        {
-            id: 1,
-            fullName: "Bob Jones",
-            designation: "JavaScript Developer",
-            gender: "male",
-            teamName: "Team A",
-        },
-        {
-            id: 2,
-            fullName: "Jill Bailey",
-            designation: "Node Developer",
-            gender: "female",
-            teamName: "Team A",
-        },
-        {
-            id: 3,
-            fullName: "Gail Shepherd",
-            designation: "Java Developer",
-            gender: "female",
-            teamName: "Team A",
-        },
-        {
-            id: 4,
-            fullName: "Sam Reynolds",
-            designation: "React Developer",
-            gender: "male",
-            teamName: "Team B",
-        },
-        {
-            id: 5,
-            fullName: "David Henry",
-            designation: "DotNet Developer",
-            gender: "male",
-            teamName: "Team B",
-        },
-        {
-            id: 6,
-            fullName: "Sarah Blake",
-            designation: "SQL Server DBA",
-            gender: "female",
-            teamName: "Team B",
-        },
-        {
-            id: 7,
-            fullName: "James Bennet",
-            designation: "Angular Developer",
-            gender: "male",
-            teamName: "Team C",
-        },
-        {
-            id: 8,
-            fullName: "Jessica Faye",
-            designation: "API Developer",
-            gender: "female",
-            teamName: "Team C",
-        },
-        {
-            id: 9,
-            fullName: "Lita Stone",
-            designation: "C++ Developer",
-            gender: "female",
-            teamName: "Team C",
-        },
-        {
-            id: 10,
-            fullName: "Daniel Young",
-            designation: "Python Developer",
-            gender: "male",
-            teamName: "Team D",
-        },
-        {
-            id: 11,
-            fullName: "Adrian Jacobs",
-            designation: "Vue Developer",
-            gender: "male",
-            teamName: "Team D",
-        },
-        {
-            id: 12,
-            fullName: "Devin Monroe",
-            designation: "Graphic Designer",
-            gender: "male",
-            teamName: "Team D",
-        },
-    ]);
+    const [employees, setEmployees] = useState(
+        JSON.parse(localStorage.getItem("employeeList")) || [
+            {
+                id: 1,
+                fullName: "Bob Jones",
+                designation: "JavaScript Developer",
+                gender: "male",
+                teamName: "Team A",
+            },
+            {
+                id: 2,
+                fullName: "Jill Bailey",
+                designation: "Node Developer",
+                gender: "female",
+                teamName: "Team A",
+            },
+            {
+                id: 3,
+                fullName: "Gail Shepherd",
+                designation: "Java Developer",
+                gender: "female",
+                teamName: "Team A",
+            },
+            {
+                id: 4,
+                fullName: "Sam Reynolds",
+                designation: "React Developer",
+                gender: "male",
+                teamName: "Team B",
+            },
+            {
+                id: 5,
+                fullName: "David Henry",
+                designation: "DotNet Developer",
+                gender: "male",
+                teamName: "Team B",
+            },
+            {
+                id: 6,
+                fullName: "Sarah Blake",
+                designation: "SQL Server DBA",
+                gender: "female",
+                teamName: "Team B",
+            },
+            {
+                id: 7,
+                fullName: "James Bennet",
+                designation: "Angular Developer",
+                gender: "male",
+                teamName: "Team C",
+            },
+            {
+                id: 8,
+                fullName: "Jessica Faye",
+                designation: "API Developer",
+                gender: "female",
+                teamName: "Team C",
+            },
+            {
+                id: 9,
+                fullName: "Lita Stone",
+                designation: "C++ Developer",
+                gender: "female",
+                teamName: "Team C",
+            },
+            {
+                id: 10,
+                fullName: "Daniel Young",
+                designation: "Python Developer",
+                gender: "male",
+                teamName: "Team D",
+            },
+            {
+                id: 11,
+                fullName: "Adrian Jacobs",
+                designation: "Vue Developer",
+                gender: "male",
+                teamName: "Team D",
+            },
+            {
+                id: 12,
+                fullName: "Devin Monroe",
+                designation: "Graphic Designer",
+                gender: "male",
+                teamName: "Team D",
+            },
+        ]
+    );
 
     useEffect(
         () => {
@@ -125,29 +127,7 @@ export default function App() {
                     : { ...employee, TeamName: selectedTeam }
                 : employee
         );
-
         setEmployees(transformedEmployees);
-    }
-
-    function generateCards(
-        employees,
-        /*Maybe not needed ->*/ selectedTeam,
-        setTeam
-    ) {
-        return (
-            <>
-                {employees.map((employee) => (
-                    <EmployeeCard
-                        isStandout={employee.TeamName === selectedTeam}
-                        fullName={employee.fullName}
-                        id={employee.id}
-                        gender={employee.gender}
-                        designation={employee.designation}
-                        onClick={handleEmployeeCardClick}
-                    />
-                ))}
-            </>
-        );
     }
 
     return (
@@ -164,8 +144,8 @@ export default function App() {
                 selectedTeam={selectedTeam}
                 setTeam={setTeam}
                 handleTeamSelectionChange={handleTeamSelectionChange}
+                handleEmployeeCardClick={handleEmployeeCardClick}
                 employees={employees}
-                generateCards={generateCards}
             />
             <Footer />
         </>

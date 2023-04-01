@@ -1,12 +1,31 @@
 import Grid from "./components/Grid";
+import EmployeeCard from "./components/EmployeeCard";
 
 const Employee = ({
     selectedTeam,
     setTeam,
     handleTeamSelectionChange,
+    handleEmployeeCardClick,
     employees,
-    generateCards
 }) => {
+    function generateCards(employees, selectedTeam) {
+        return (
+            <>
+                {employees.map((employee) => (
+                    <EmployeeCard
+                        key={employee.id}
+                        isStandout={employee.TeamName === selectedTeam}
+                        fullName={employee.fullName}
+                        id={employee.id}
+                        gender={employee.gender}
+                        designation={employee.designation}
+                        onClick={handleEmployeeCardClick}
+                    />
+                ))}
+            </>
+        );
+    }
+
     return (
         <main className="container">
             <div className="row justify-content mt-3 mb-3">

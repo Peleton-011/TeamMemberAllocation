@@ -13,7 +13,6 @@ const EmployeeCard = ({
 }) => {
     return (
         <div
-            key={id}
             id={id}
             className={`card m-2 ${isStandout ? "standout" : ""}`}
             style={{ cursor: "pointer" }}
