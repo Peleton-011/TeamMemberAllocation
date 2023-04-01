@@ -30,6 +30,8 @@ export default function App() {
         localStorage.setItem("selectedTeam", JSON.stringify(selectedTeam));
     }, [selectedTeam]);
 
+    //Handling stuff
+
     function handleTeamSelectionChange(event) {
         setTeam(event.target.value);
     }

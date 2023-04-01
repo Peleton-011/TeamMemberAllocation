@@ -57,7 +57,7 @@ const Employee = ({
                     <>
                         {generateCards(
                             employees,
-                            /*Maybe not needed ->*/ selectedTeam,
+                            selectedTeam,
                             setTeam
                         )}
                     </>
