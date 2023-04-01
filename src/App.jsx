@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Header from "./components/Header";
 import Employees from "./Employees";
 import Footer from "./components/Footer";
+import Navigation from "./components/Navigation";
 
 import employeeData from "./SampleData.json";
 import GroupedTeamMembers from "./GroupedTeamMembers";
@@ -53,6 +54,7 @@ export default function App() {
 
     return (
         <Router>
+            <Navigation />
             <Header
                 selectedTeam={selectedTeam}
                 teamMemberCount={

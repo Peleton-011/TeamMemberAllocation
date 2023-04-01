@@ -1,9 +1,20 @@
-import React from 'react'
+import React from "react";
+import { Link } from "react-router-dom";
 
 const Navigation = () => {
-  return (
-    <div>Navigation</div>
-  )
-}
+    return (
+        <nav className="navbar navbar-expanded-lg navbar-light bg-light">
+            <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+                <li className="nav-item">
+                    <Link className="nav-link" to="/">Home</Link>
+                </li>
+                <li className="nav-item">
+                    <Link className="nav-link" to="/GroupedTeamMembers">Teams</Link>
+                </li>
 
-export default Navigation
+            </ul>
+        </nav>
+    );
+};
+
+export default Navigation;
