@@ -3,11 +3,19 @@ import React from "react";
 import femaleProfile from "../images/femaleProfile.jpg";
 import maleProfile from "../images/maleProfile.jpg";
 
-const EmployeeCard = ({ fullName, id, gender, designation, onClick, isStandout }) => {
+const EmployeeCard = ({
+    fullName,
+    id,
+    gender,
+    designation,
+    onClick,
+    isStandout,
+}) => {
     return (
         <div
+            key={id}
             id={id}
-            className={`card m-2 ${isStandout ? "standout":""}`}
+            className={`card m-2 ${isStandout ? "standout" : ""}`}
             style={{ cursor: "pointer" }}
             onClick={onClick}
         >

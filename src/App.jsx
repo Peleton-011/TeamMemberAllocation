@@ -7,9 +7,11 @@ import Employees from "./Employees";
 import Footer from "./footer";
 
 export default function App() {
-    const [selectedTeam, setTeam] = useState("Team A");
+    const [selectedTeam, setTeam] = useState(
+        JSON.parse(localStorage.getItem("selectedTeam")) || "Team A"
+    );
 
-    const [employees, setEmployees] = useState([
+    const [employees, setEmployees] = useState(JSON.parse(localStorage.getItem("employeeList")) || [
         {
             id: 1,
             fullName: "Bob Jones",
@@ -98,6 +100,7 @@ export default function App() {
 
     useEffect(
         () => {
+            console.log(JSON.stringify(employees));
             localStorage.setItem("employeeList", JSON.stringify(employees));
         },
         /*We want the effect to run when an employee's team changes to store the change in local storage*/ [
@@ -105,14 +108,10 @@ export default function App() {
         ]
     );
 
-    useEffect(
-        () => {
-            localStorage.setItem("selectedTeam", JSON.stringify(selectedTeam));
-        },
-        [
-            selectedTeam,
-        ]
-    );
+    useEffect(() => {
+        console.log(JSON.stringify(selectedTeam));
+        localStorage.setItem("selectedTeam", JSON.stringify(selectedTeam));
+    }, [selectedTeam]);
 
     function handleTeamSelectionChange(event) {
         setTeam(event.target.value);
@@ -152,7 +151,7 @@ export default function App() {
     }
 
     return (
-        <main>
+        <>
             <Header
                 selectedTeam={selectedTeam}
                 teamMemberCount={
@@ -169,6 +168,6 @@ export default function App() {
                 generateCards={generateCards}
             />
             <Footer />
-        </main>
+        </>
     );
 }
