@@ -30,14 +30,15 @@ const Employee = ({
         const teams = []; 
 
         employees.forEach((employee) => {
-            if (employee.teamName in teams) {
+            console.log(employee.teamName, " in ", teams, " evals to: ", employee.teamName in teams)
+            if (teams.indexOf(employee.teamName) >= 0) {
                 return;
             }
 
             teams.push(employee.teamName);
         });
-        console.log(JSON.stringify(employees, null, 4));
-        console.log(JSON.stringify(teams, null, 4));
+        // console.log("Teams: ",JSON.stringify(teams, null, 4));
+        return teams;
     }
 
     parseTeams(employees);
