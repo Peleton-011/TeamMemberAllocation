@@ -1,9 +1,9 @@
 import "./App.css";
 import { useState, useEffect } from "react";
 
-import Header from "./header";
+import Header from "./Header";
 import Employees from "./Employees";
-import Footer from "./footer";
+import Footer from "./Footer";
 
 export default function App() {
     //Stateful data and such
@@ -12,8 +12,7 @@ export default function App() {
     );
 
     const [employees, setEmployees] = useState(
-        // JSON.parse(localStorage.getItem("employeeList")) || 
-        [
+        JSON.parse(localStorage.getItem("employeeList")) || [
             {
                 id: 1,
                 fullName: "Bob Jones",
@@ -103,7 +102,6 @@ export default function App() {
 
     useEffect(
         () => {
-            console.log(JSON.stringify(employees));
             localStorage.setItem("employeeList", JSON.stringify(employees));
         },
         /*We want the effect to run when an employee's team changes to store the change in local storage*/ [
@@ -112,7 +110,6 @@ export default function App() {
     );
 
     useEffect(() => {
-        console.log(JSON.stringify(selectedTeam));
         localStorage.setItem("selectedTeam", JSON.stringify(selectedTeam));
     }, [selectedTeam]);
 

@@ -31,20 +31,12 @@ const Employee = ({
         const teams = [];
 
         employees.forEach((employee) => {
-            console.log(
-                employee.teamName,
-                " in ",
-                teams,
-                " evals to: ",
-                employee.teamName in teams
-            );
             if (teams.indexOf(employee.teamName) >= 0) {
                 return;
             }
 
             teams.push(employee.teamName);
         });
-        // console.log("Teams: ",JSON.stringify(teams, null, 4));
         return teams;
     }
 
@@ -53,9 +45,10 @@ const Employee = ({
             <Select
                 defaultVal={selectedTeam}
                 onChange={handleTeamSelectionChange}
-                values={parseTeams(employees).map((team) => {
-                    return {value: team, label: team};
-                })}
+                values={parseTeams(employees).map((team) => ({
+                    value: team,
+                    label: team,
+                }))}
             />
 
             <Grid
