@@ -1,9 +1,9 @@
 import "./App.css";
 import { useState, useEffect } from "react";
 
-import Header from "./Header";
+import Header from "./components/Header";
 import Employees from "./Employees";
-import Footer from "./Footer";
+import Footer from "./components/Footer";
 
 import employeeData from "./SampleData.json";
 
