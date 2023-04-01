@@ -4,7 +4,7 @@ import Grid from "./components/Grid";
 import EmployeeCard from "./components/EmployeeCard";
 
 const Employee = () => {
-    const [selectedTeam, setTeam] = useState("TeamB");
+    const [selectedTeam, setTeam] = useState("Team A");
 
     const [employees, setEmployees] = useState([
         {
@@ -12,84 +12,84 @@ const Employee = () => {
             fullName: "Bob Jones",
             designation: "JavaScript Developer",
             gender: "male",
-            teamName: "TeamA",
+            teamName: "Team A",
         },
         {
             id: 2,
             fullName: "Jill Bailey",
             designation: "Node Developer",
             gender: "female",
-            teamName: "TeamA",
+            teamName: "Team A",
         },
         {
             id: 3,
             fullName: "Gail Shepherd",
             designation: "Java Developer",
             gender: "female",
-            teamName: "TeamA",
+            teamName: "Team A",
         },
         {
             id: 4,
             fullName: "Sam Reynolds",
             designation: "React Developer",
             gender: "male",
-            teamName: "TeamB",
+            teamName: "Team B",
         },
         {
             id: 5,
             fullName: "David Henry",
             designation: "DotNet Developer",
             gender: "male",
-            teamName: "TeamB",
+            teamName: "Team B",
         },
         {
             id: 6,
             fullName: "Sarah Blake",
             designation: "SQL Server DBA",
             gender: "female",
-            teamName: "TeamB",
+            teamName: "Team B",
         },
         {
             id: 7,
             fullName: "James Bennet",
             designation: "Angular Developer",
             gender: "male",
-            teamName: "TeamC",
+            teamName: "Team C",
         },
         {
             id: 8,
             fullName: "Jessica Faye",
             designation: "API Developer",
             gender: "female",
-            teamName: "TeamC",
+            teamName: "Team C",
         },
         {
             id: 9,
             fullName: "Lita Stone",
             designation: "C++ Developer",
             gender: "female",
-            teamName: "TeamC",
+            teamName: "Team C",
         },
         {
             id: 10,
             fullName: "Daniel Young",
             designation: "Python Developer",
             gender: "male",
-            teamName: "TeamD",
+            teamName: "Team D",
         },
         {
             id: 11,
             fullName: "Adrian Jacobs",
             designation: "Vue Developer",
             gender: "male",
-            teamName: "TeamD",
+            teamName: "Team D",
         },
         {
             id: 12,
             fullName: "Devin Monroe",
             designation: "Graphic Designer",
             gender: "male",
-            teamName: "TeamD",
+            teamName: "Team D",
         },
     ]);
 
@@ -106,10 +106,10 @@ const Employee = () => {
                         value={selectedTeam}
                         onChange={handleTeamSelectionChange}
                     >
-                        <option value="TeamA">Team A</option>
-                        <option value="TeamB">Team B</option>
-                        <option value="TeamC">Team C</option>
-                        <option value="TeamD">Team D</option>
+                        <option value="Team A">Team A</option>
+                        <option value="Team B">Team B</option>
+                        <option value="Team C">Team C</option>
+                        <option value="Team D">Team D</option>
                     </select>
                 </div>
             </div>
@@ -150,9 +150,7 @@ const Employee = () => {
             <>
                 {employees.map((employee) => (
                     <EmployeeCard
-                        isStandout={
-                            employee.TeamName === selectedTeam ? "standout" : ""
-                        }
+                        isStandout={employee.TeamName === selectedTeam}
                         fullName={employee.fullName}
                         id={employee.id}
                         gender={employee.gender}
