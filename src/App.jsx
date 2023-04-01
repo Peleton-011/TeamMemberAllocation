@@ -133,11 +133,23 @@ export default function App() {
         );
     }
 
-
     return (
         <main>
-            <Header />
-            <Employees selectedTeam={selectedTeam} setTeam={setTeam} handleTeamSelectionChange={handleTeamSelectionChange} employees={employees} generateCards={generateCards} />
+            <Header
+                selectedTeam={selectedTeam}
+                teamMemberCount={
+                    employees.filter(
+                        (employee) => employee.TeamName === selectedTeam
+                    ).length
+                }
+            />
+            <Employees
+                selectedTeam={selectedTeam}
+                setTeam={setTeam}
+                handleTeamSelectionChange={handleTeamSelectionChange}
+                employees={employees}
+                generateCards={generateCards}
+            />
             <Footer />
         </main>
     );
