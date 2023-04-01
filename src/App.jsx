@@ -1,5 +1,5 @@
 import "./App.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import EmployeeCard from "./components/EmployeeCard";
 
 import Header from "./header";
@@ -95,6 +95,24 @@ export default function App() {
             teamName: "Team D",
         },
     ]);
+
+    useEffect(
+        () => {
+            localStorage.setItem("employeeList", JSON.stringify(employees));
+        },
+        /*We want the effect to run when an employee's team changes to store the change in local storage*/ [
+            employees,
+        ]
+    );
+
+    useEffect(
+        () => {
+            localStorage.setItem("selectedTeam", JSON.stringify(selectedTeam));
+        },
+        [
+            selectedTeam,
+        ]
+    );
 
     function handleTeamSelectionChange(event) {
         setTeam(event.target.value);
