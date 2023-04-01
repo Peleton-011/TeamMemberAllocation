@@ -7,6 +7,8 @@ import Employees from "./Employees";
 import Footer from "./components/Footer";
 import Navigation from "./components/Navigation";
 
+import NotFound from "./components/NotFound";
+
 import employeeData from "./SampleData.json";
 import GroupedTeamMembers from "./GroupedTeamMembers";
 
@@ -79,6 +81,7 @@ export default function App() {
                     }
                 ></Route>
                 <Route path="/GroupedTeamMembers" element={<GroupedTeamMembers />}></Route>
+                <Route path="*" element={<NotFound />}></Route>
             </Routes>
             <Footer />
         </Router>
