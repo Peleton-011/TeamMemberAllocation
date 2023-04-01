@@ -12,7 +12,8 @@ export default function App() {
     );
 
     const [employees, setEmployees] = useState(
-        JSON.parse(localStorage.getItem("employeeList")) || [
+        // JSON.parse(localStorage.getItem("employeeList")) || 
+        [
             {
                 id: 1,
                 fullName: "Bob Jones",
@@ -122,9 +123,9 @@ export default function App() {
     function handleEmployeeCardClick(event) {
         const transformedEmployees = employees.map((employee) =>
             employee.id === parseInt(event.currentTarget.id)
-                ? employee.TeamName === selectedTeam
-                    ? { ...employee, TeamName: "" }
-                    : { ...employee, TeamName: selectedTeam }
+                ? employee.teamName === selectedTeam
+                    ? { ...employee, teamName: "" }
+                    : { ...employee, teamName: selectedTeam }
                 : employee
         );
         setEmployees(transformedEmployees);
@@ -136,7 +137,7 @@ export default function App() {
                 selectedTeam={selectedTeam}
                 teamMemberCount={
                     employees.filter(
-                        (employee) => employee.TeamName === selectedTeam
+                        (employee) => employee.teamName === selectedTeam
                     ).length
                 }
             />

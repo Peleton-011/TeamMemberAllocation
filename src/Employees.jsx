@@ -14,7 +14,7 @@ const Employee = ({
                 {employees.map((employee) => (
                     <EmployeeCard
                         key={employee.id}
-                        isStandout={employee.TeamName === selectedTeam}
+                        isStandout={employee.teamName === selectedTeam}
                         fullName={employee.fullName}
                         id={employee.id}
                         gender={employee.gender}
@@ -25,6 +25,22 @@ const Employee = ({
             </>
         );
     }
+
+    function parseTeams(employees) {
+        const teams = []; 
+
+        employees.forEach((employee) => {
+            if (employee.teamName in teams) {
+                return;
+            }
+
+            teams.push(employee.teamName);
+        });
+        console.log(JSON.stringify(employees, null, 4));
+        console.log(JSON.stringify(teams, null, 4));
+    }
+
+    parseTeams(employees);
 
     return (
         <main className="container">
