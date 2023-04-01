@@ -96,7 +96,7 @@ const Employee = () => {
     function handleTeamSelectionChange(event) {
         setTeam(event.target.value);
     }
-    
+
     return (
         <main className="container">
             <div className="row justify-content mt-3 mb-3">
@@ -114,24 +114,55 @@ const Employee = () => {
                 </div>
             </div>
 
-            <Grid size={3} content={() => <>{generateCards(employees)}</>} />
+            <Grid
+                size={3}
+                content={() => (
+                    <>
+                        {generateCards(
+                            employees,
+                            /*Maybe not needed ->*/ selectedTeam,
+                            setTeam
+                        )}
+                    </>
+                )}
+            />
         </main>
     );
-};
 
-function generateCards(employees) {
-    return (
-        <>
-            {employees.map((employee) => (
-                <EmployeeCard
-                    fullName={employee.fullName}
-                    id={employee.id}
-                    gender={employee.gender}
-                    designation={employee.designation}
-                />
-            ))}
-        </>
-    );
-}
+    function handleEmployeeCardClick(event) {
+        const transformedEmployees = employees.map((employee) =>
+            employee.id === parseInt(event.currentTarget.id)
+                ? employee.TeamName === selectedTeam
+                    ? { ...employee, TeamName: "" }
+                    : { ...employee, TeamName: selectedTeam }
+                : employee
+        );
+
+        setEmployees(transformedEmployees);
+    }
+
+    function generateCards(
+        employees,
+        /*Maybe not needed ->*/ selectedTeam,
+        setTeam
+    ) {
+        return (
+            <>
+                {employees.map((employee) => (
+                    <EmployeeCard
+                        isStandout={
+                            employee.TeamName === selectedTeam ? "standout" : ""
+                        }
+                        fullName={employee.fullName}
+                        id={employee.id}
+                        gender={employee.gender}
+                        designation={employee.designation}
+                        onClick={handleEmployeeCardClick}
+                    />
+                ))}
+            </>
+        );
+    }
+};
 
 export default Employee;
