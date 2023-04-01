@@ -1,11 +1,13 @@
 import "./App.css";
 import { useState, useEffect } from "react";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 import Header from "./components/Header";
 import Employees from "./Employees";
 import Footer from "./components/Footer";
 
 import employeeData from "./SampleData.json";
+import GroupedTeamMembers from "./GroupedTeamMembers";
 
 export default function App() {
     //Stateful data and such
@@ -14,7 +16,9 @@ export default function App() {
     );
 
     const [employees, setEmployees] = useState(
-        JSON.parse(localStorage.getItem("employeeList")) || JSON.parse(employeeData) || []
+        JSON.parse(localStorage.getItem("employeeList")) ||
+            JSON.parse(employeeData) ||
+            []
     );
 
     useEffect(
@@ -48,7 +52,7 @@ export default function App() {
     }
 
     return (
-        <>
+        <Router>
             <Header
                 selectedTeam={selectedTeam}
                 teamMemberCount={
@@ -57,14 +61,24 @@ export default function App() {
                     ).length
                 }
             />
-            <Employees
-                selectedTeam={selectedTeam}
-                setTeam={setTeam}
-                handleTeamSelectionChange={handleTeamSelectionChange}
-                handleEmployeeCardClick={handleEmployeeCardClick}
-                employees={employees}
-            />
+            <Routes>
+                <Route
+                    path="/"
+                    element={
+                        <Employees
+                            selectedTeam={selectedTeam}
+                            setTeam={setTeam}
+                            handleTeamSelectionChange={
+                                handleTeamSelectionChange
+                            }
+                            handleEmployeeCardClick={handleEmployeeCardClick}
+                            employees={employees}
+                        />
+                    }
+                ></Route>
+                <Route path="/GroupedTeamMembers" element={<GroupedTeamMembers />}></Route>
+            </Routes>
             <Footer />
-        </>
+        </Router>
     );
 }
