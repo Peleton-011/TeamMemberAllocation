@@ -2,9 +2,9 @@ import React from "react";
 import { useState } from "react";
 
 const GroupedTeamMembers = ({ employees, selectedTeam, setTeam, teams }) => {
-    const [groupedEmployees, setGroupData] = useState(groupTeamMembers());
+    const [groupedEmployees, setGroupData] = useState(groupTeamMembers(employees, teams));
 
-    function groupTeamMembers(employees, teams) {
+    function groupTeamMembers(employees, teams) {GroupedTeamMembers
         const groupedTeams = [];
         for (let i = 0; i < teams.length; i++) {
             const team = teams[i];
