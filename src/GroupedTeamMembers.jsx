@@ -2,6 +2,7 @@ import React from "react";
 import { useState } from "react";
 
 const GroupedTeamMembers = ({ employees, selectedTeam, setTeam, teams }) => {
+
     const [groupedEmployees, setGroupData] = useState(
         groupTeamMembers(employees, teams)
     );
@@ -28,11 +29,15 @@ const GroupedTeamMembers = ({ employees, selectedTeam, setTeam, teams }) => {
     }
 
     function handleTeamClick(event) {
+        console.log("Team \"" + event.currentTarget.id + "\" clicked");
         let newTeamData = groupedEmployees.map((teamData) =>
             teamData.team === event.currentTarget.id
                 ? { ...teamData, collapsed: !teamData.collapsed }
                 : teamData
         );
+
+        console.log(JSON.stringify(groupedEmployees, null, 4));
+        console.log(JSON.stringify(newTeamData, null, 4));
         setGroupData(newTeamData);
         setTeam(event.currentTarget.id);
     }
@@ -54,7 +59,7 @@ const GroupedTeamMembers = ({ employees, selectedTeam, setTeam, teams }) => {
                     </h4>
                     <div
                         id={"collapse_" + thisTeam.team}
-                        className={thisTeam.collapsed ? "collapsed" : ""}
+                        className={thisTeam.collapsed ? "collapse" : ""}
                     >
                         <hr />
                         {thisTeam.members.map((member) => {
@@ -72,11 +77,6 @@ const GroupedTeamMembers = ({ employees, selectedTeam, setTeam, teams }) => {
                     </div>
                 </div>
             ))}
-            <div className="row justify-content-center mt-3 mb-4">
-                <div className="col-B">
-                    <h1 className="mt-4 p5 rounded">Grouped Team Members</h1>
-                </div>
-            </div>
         </main>
     );
 };
