@@ -29,7 +29,7 @@ const Employee = ({
     }
 
     return (
-        <main className="container">
+        <main className="container" style={{maxWidth: "min(80vw, 1000px)"}}>
             <Select
                 defaultVal={selectedTeam}
                 onChange={handleTeamSelectionChange}

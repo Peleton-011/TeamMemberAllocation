@@ -7,7 +7,7 @@ const Grid = ({ content, size }) => {
                 <div
                     style={{
                         display: "grid",
-                        gridTemplateColumns: `repeat(${size || 3}, 1fr)`,
+                        gridTemplateColumns: `repeat(auto-fill, minmax(250px, 1fr))`,
                     }}
                 >
                     {content()}
