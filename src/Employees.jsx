@@ -8,6 +8,7 @@ const Employee = ({
     handleTeamSelectionChange,
     handleEmployeeCardClick,
     employees,
+    teams
 }) => {
     function generateCards(employees, selectedTeam) {
         return (
@@ -27,25 +28,12 @@ const Employee = ({
         );
     }
 
-    function parseTeams(employees) {
-        const teams = [];
-
-        employees.forEach((employee) => {
-            if (teams.indexOf(employee.teamName) >= 0) {
-                return;
-            }
-
-            teams.push(employee.teamName);
-        });
-        return teams;
-    }
-
     return (
         <main className="container">
             <Select
                 defaultVal={selectedTeam}
                 onChange={handleTeamSelectionChange}
-                values={parseTeams(employees).map((team) => ({
+                values={teams.map((team) => ({
                     value: team,
                     label: team,
                 }))}

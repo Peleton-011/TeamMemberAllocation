@@ -24,6 +24,21 @@ export default function App() {
             []
     );
 
+    const [teams, setTeams] = useState(parseTeams(employees));
+
+    function parseTeams(employees) {
+        const teams = [];
+
+        employees.forEach((employee) => {
+            if (teams.indexOf(employee.teamName) >= 0) {
+                return;
+            }
+
+            teams.push(employee.teamName);
+        });
+        return teams;
+    }
+
     useEffect(
         () => {
             localStorage.setItem("employeeList", JSON.stringify(employees));
@@ -72,15 +87,26 @@ export default function App() {
                         <Employees
                             selectedTeam={selectedTeam}
                             setTeam={setTeam}
+                            employees={employees}
                             handleTeamSelectionChange={
                                 handleTeamSelectionChange
                             }
                             handleEmployeeCardClick={handleEmployeeCardClick}
-                            employees={employees}
+                            teams={teams}
                         />
                     }
                 ></Route>
-                <Route path="/GroupedTeamMembers" element={<GroupedTeamMembers />}></Route>
+                <Route
+                    path="/GroupedTeamMembers"
+                    element={
+                        <GroupedTeamMembers
+                            selectedTeam={selectedTeam}
+                            setTeam={setTeam}
+                            employees={employees}
+                            teams={teams}
+                        />
+                    }
+                ></Route>
                 <Route path="*" element={<NotFound />}></Route>
             </Routes>
             <Footer />
